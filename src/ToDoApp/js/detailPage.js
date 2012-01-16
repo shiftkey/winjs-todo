@@ -13,7 +13,7 @@
         WinJS.UI.processAll(elements)
             .then(function () {
                 elements.querySelector('.title').textContent = item.title;
-                elements.querySelector('.content').innerHTML = item.content;
+                //elements.querySelector('.content').innerHTML = item.content;
             });
     }
 

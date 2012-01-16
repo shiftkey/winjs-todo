@@ -29,6 +29,7 @@
     <Content Include="html\collectionPage.html" />
     <Content Include="html\detailPage.html" />
     <Content Include="html\landingPage.html" />
+    <Content Include="images\items\code52.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
