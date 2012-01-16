@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="83288f89-2c5c-47a8-b4b4-48219d34d210" Version="1.0.0.0" Publisher="CN=shift.key" />
+  <Properties>
+    <DisplayName>ToDoApp</DisplayName>
+    <Description>ToDoApp</Description>
+    <PublisherDisplayName>shift.key</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="en-US" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="To-Do List" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="A simple to-do application" ForegroundText="light" BackgroundColor="#0084FF" InitialRotationPreference="portrait">
+        <DefaultTile ShowName="true" />
+        <SplashScreen Image="images\splashscreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
