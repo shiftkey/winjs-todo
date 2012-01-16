@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="To-Do List" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="A simple to-do application" ForegroundText="light" BackgroundColor="#0084FF" InitialRotationPreference="portrait">
+      <VisualElements DisplayName="To-Do List" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="A simple to-do application" ForegroundText="light" BackgroundColor="#B10000" InitialRotationPreference="portrait">
         <DefaultTile ShowName="true" />
         <SplashScreen Image="images\splashscreen.png" />
       </VisualElements>
