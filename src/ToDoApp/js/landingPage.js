@@ -122,45 +122,62 @@
         var colors = ['rgba(209, 211, 212, 1)', 'rgba(147, 149, 152, 1)', 'rgba(65, 64, 66, 1)'];
         var items = [];
 
-        //for (var g = 0, gl = pageData.groups.length; g < gl; g++) {
-        //    var numItems = g % 2 === 0 ? 6 : 4;
-        //    for (var i = 0; i < numItems; i++) {
-        //        items.push({
-        //            group: pageData.groups[g],
-        //            key: 'item' + i,
-        //            title: g + '.' + i + (i % 2 === 0 ? ' ǺSed nisl nibh, eleifend posuere.' : ' ǺSed nisl nibh, eleifend posuere laoreet egestas, porttitor quis lorem.'),
-        //            subtitle: 'Phasellus faucibus',
-        //            backgroundColor: colors[i % colors.length],
-        //            content: (new Array(16)).join('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>'),
-        //            description: 'Ǻ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.'
-        //        });
-        //    }
-        //}
-
         CreateMockBacklog(items);
+        CreateCurrentItems(items);
+        CreateCompletedItems(items);
 
         return items;
     }
 
     function CreateMockBacklog(items) {
+        var category = pageData.groups[0];
 
         items.push({
-            group: pageData.groups[0],
+            group: category,
             key: 'backlog1',
-            title: 'Code52 - mention it',
+            title: 'Code52',
             subtitle: 'Ensure that you mention Code52 man!',
             backgroundImage: 'url(/images/items/code52.png)',
         });
-
         items.push({
-            group: pageData.groups[0],
+            group: category,
             key: 'backlog2',
-            title: 'GiveCamp - mention it',
-            subtitle: 'Ensure that you mention Code52 here',
-            backgroundImage: 'url(/images/items/code52.png)'
+            title: 'GiveCamp',
+            subtitle: 'Ensure that you mention Givecamp!',
+            backgroundImage: 'url(/images/items/givecamp.png)'
+        });
+    }
+
+    function CreateCurrentItems(items) {
+        var category = pageData.groups[1];
+        items.push({
+            group: category,
+            key: 'backlog3',
+            title: 'SydJS',
+            subtitle: 'Talk about WinJS',
+            backgroundImage: 'url(/images/items/sydjs.png)',
         });
 
+        for (var i = 4; i < 10; i++) {
+            items.push({
+                group: category,
+                key: 'backlog' + i,
+                title: 'SydJS',
+                subtitle: 'Have a beer',
+                backgroundImage: 'url(/images/items/beer.jpg)',
+            });
+        }
+    }
 
+    function CreateCompletedItems(items) {
+        var category = pageData.groups[2];
+        items.push({
+            group: category,
+            key: 'backlog3',
+            title: 'SydJS',
+            subtitle: 'Prepare talk',
+            backgroundImage: 'url(/images/items/sydjs.png)',
+        });
     }
 
     var pageData = {};

@@ -73,3 +73,14 @@
     margin-left: 7px;
 }
 }
+
+body
+{
+    background-color: rgb(176, 0, 0);
+}
+
+.win-appbar
+{
+    background-color: rgb(33, 33, 33);
+}
+
