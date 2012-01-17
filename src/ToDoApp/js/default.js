@@ -3,7 +3,25 @@
     // Uncomment the following line to enable first chance exceptions.
     // Debug.enableFirstChanceException(true);
 
+    var Notifications = Windows.UI.Notifications;
+
     var homePage;
+
+    function DisplayTileMessage(message) {
+        var updater = Notifications.TileUpdateManager.createTileUpdaterForApplication();
+        updater.clear();
+
+        // there's a multitude of tile notification templates available - MSDN will tell you more details
+        var tileXml = Notifications.TileUpdateManager.getTemplateContent(Notifications.TileTemplateType.tileWideText03);
+        
+        // modify the template (yes, that's right, XML parsing)
+        var tileAttributes = tileXml.getElementsByTagName("text");
+        tileAttributes[0].appendChild(tileXml.createTextNode(message));
+        var tileNotification = new Notifications.TileNotification(tileXml);
+
+        // send the notification to the app's default tile
+        updater.update(tileNotification);
+    }
 
     function navigateHome() {
         var loc = WinJS.Navigation.location;
@@ -55,10 +73,12 @@
             }, false);
 
             WinJS.Navigation.navigate(homePage);
+            DisplayTileMessage('Hello SydJS!');
         }
     }
 
     WinJS.Navigation.addEventListener('navigated', navigated);
     WinJS.Application.start();
 
+    
 })();
