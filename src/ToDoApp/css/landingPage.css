@@ -2,19 +2,22 @@
  * Define the layout of the page.
  */
 
-.landingPage .landingList {
+.landingPage .landingList
+{
     width: 100%;
     height: 100%;
     margin-bottom: 4px;
 }
 
-.landingPage .landingList .win-groupHeader {
+.landingPage .landingList .win-groupHeader
+{
     margin: 0;
     padding: 0;
     margin-left: 73px;
 }
 
-.landingPage .landingList .win-groupHeader h1 {
+.landingPage .landingList .win-groupHeader h1
+{
     font-size: 20pt;
     line-height: 24pt;
     margin: 0;
@@ -22,17 +25,21 @@
     height: 36pt;
 }
 
-.landingPage .landingList .win-groupHeader:first-of-type {
+.landingPage .landingList .win-groupHeader:first-of-type
+{
     margin-left: 120px;
 }
 
-.landingPage .landingList .win-item {
+.landingPage .landingList .win-item
+{
     width: 252px;
     height: 252px;
     margin-right: 8px;
     margin-bottom: 8px;
 }
-.landingPage .landingList .largeTileTextTemplate {
+
+.landingPage .landingList .largeTileTextTemplate
+{
     width: 100%;
     height: 100%;
     display: -ms-grid;
@@ -40,19 +47,22 @@
     -ms-grid-rows: 1fr 92px;
 }
 
-.landingPage .landingList .largeTileTextTemplateBackground {
+.landingPage .landingList .largeTileTextTemplateBackground
+{
     -ms-grid-row-span: 2;
     background-color: white;
 }
 
-.landingPage .landingList .largeTileTextTemplateOverlay {
+.landingPage .landingList .largeTileTextTemplateOverlay
+{
     -ms-grid-row: 2;
     -ms-grid-row-align: stretch;
     background: rgba(22,22,22,1);
     padding: 8px 12px;
 }
 
-.landingPage .landingList .largeTileTextTemplateLargeText {
+.landingPage .landingList .largeTileTextTemplateLargeText
+{
     font-size: 11pt;
     line-height: 15pt;
     max-height: 45pt;
@@ -61,7 +71,8 @@
     text-overflow: ellipsis;
 }
 
-.landingPage .landingList .largeTileTextTemplateSmallText {
+.landingPage .landingList .largeTileTextTemplateSmallText
+{
     font-size: 12pt;
     line-height: 15pt;
     color: rgba(255,255,255,0.49);
@@ -70,7 +81,8 @@
     white-space: nowrap;
 }
 
-.landingPage .landingList .largeTileTextTemplateSmallTextList {
+.landingPage .landingList .largeTileTextTemplateSmallTextList
+{
     font-size: 9pt;
     line-height: 15pt;
     opacity: 0.49;
@@ -79,44 +91,51 @@
     white-space: nowrap;
 }
 
-@media screen and (-ms-view-state: snapped) {
-.landingPage .landingList .win-item {
-    width: 282px;
-    height: 44px;
-    padding: 8px 0px 8px 8px;
-    margin-left: 4px;
-    margin-right: 16px;
-}
+@media screen and (-ms-view-state: snapped)
+{
+    .landingPage .landingList .win-item
+    {
+        width: 282px;
+        height: 44px;
+        padding: 8px 0px 8px 8px;
+        margin-left: 4px;
+        margin-right: 16px;
+    }
 
-.landingPage .landingList .largeTileTextTemplate {
-    display: -ms-grid;
-    -ms-grid-columns: 44px 8px 1fr;
-    -ms-grid-rows: 1fr;
-}
+    .landingPage .landingList .largeTileTextTemplate
+    {
+        display: -ms-grid;
+        -ms-grid-columns: 44px 8px 1fr;
+        -ms-grid-rows: 1fr;
+    }
 
-.landingPage .landingList .largeTileTextTemplateBackground {
-    -ms-grid-column: 1;
-    -ms-grid-row-span: 1;
-}
+    .landingPage .landingList .largeTileTextTemplateBackground
+    {
+        -ms-grid-column: 1;
+        -ms-grid-row-span: 1;
+    }
 
-.landingPage .landingList .largeTileTextTemplateOverlay {
-    -ms-grid-column: 3;
-    -ms-grid-row: 1;
-    -ms-grid-row-align: stretch;
-    background: transparent;
-    padding: 0;
-}
+    .landingPage .landingList .largeTileTextTemplateOverlay
+    {
+        -ms-grid-column: 3;
+        -ms-grid-row: 1;
+        -ms-grid-row-align: stretch;
+        background: transparent;
+        padding: 0;
+    }
 
-.landingPage .landingList .largeTileTextTemplateLargeText {
-    font-size: 11pt;
-    line-height: 15pt;
-    max-height: 30pt;
-    color: inherit;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+    .landingPage .landingList .largeTileTextTemplateLargeText
+    {
+        font-size: 11pt;
+        line-height: 15pt;
+        max-height: 30pt;
+        color: inherit;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-.landingPage .landingList .largeTileTextTemplateSmallText {
-    display: none;
-}
+    .landingPage .landingList .largeTileTextTemplateSmallText
+    {
+        display: none;
+    }
 }

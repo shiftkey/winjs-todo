@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>Detail Page</title>
-    
     <!-- WinJS references -->
     <link rel="stylesheet" href="/winjs/css/ui-dark.css" />
     <script type="ms-deferred/javascript" src="/winjs/js/base.js"></script>
@@ -13,7 +12,6 @@
     <script type="ms-deferred/javascript" src="/winjs/js/animations.js"></script>
     <script type="ms-deferred/javascript" src="/winjs/js/uicollections.js"></script>
     <script type="ms-deferred/javascript" src="/winjs/js/wwaapp.js"></script>
-
     <link rel="stylesheet" href="/css/default.css" />
     <link rel="stylesheet" href="/css/detailPage.css" />
     <script type="ms-deferred/javascript" src="/js/detailPage.js"></script>
@@ -22,19 +20,35 @@
     <!-- The content that will be loaded and displayed. -->
     <div class="detailPage fragment">
         <header role="banner" aria-label="Header content">
-            <button disabled class="win-backbutton" aria-label="Back"></button>
+            <button disabled class="win-backbutton" aria-label="Back">
+            </button>
             <div class="titleArea">
-                <h1 class="pageTitle win-title"></h1>
+                <h1 class="pageTitle win-title">
+                </h1>
             </div>
         </header>
         <section role="main" aria-label="Main content">
             <article>
                 <div>
-                    <header>
-                        <h1 class="title win-contentTitle"></h1>
-                    </header>
-                    <div class="content"></div>
-                    <div class="image"></div>
+                    <h1 class="title win-contentTitle">
+                        Title</h1>
+                    <input type="text" id="title" />
+                    <h1 class="title win-contentTitle">
+                        Details</h1>
+                    <input type="text" id="subtitle" />
+                    <div id="image" style="background-repeat: no-repeat">
+                    </div>
+                    <div>
+                        <button id="open" class="win-command">
+                            <span class="win-commandicon win-large">&#xE109;</span><span class="win-label">Attach File</span>
+                        </button>
+                        <button id="capture" class="win-command">
+                            <span class="win-commandicon win-large">&#x1f4f7;</span><span class="win-label">Capture Photo</span>
+                        </button>
+                    </div>
+                    <button id="save">
+                        <span>Save</span>
+                    </button>
                 </div>
             </article>
         </section>

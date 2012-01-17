@@ -12,9 +12,9 @@
 
         WinJS.UI.processAll(elements)
             .then(function () {
-            elements.querySelector('.title').textContent = item.title;
-            elements.querySelector('.content').innerHTML = item.subtitle;
-            elements.querySelector('.image').style.backgroundImage = item.backgroundImage;
+            elements.querySelector('#title').value = item.title;
+            elements.querySelector('#subtitle').value = item.subtitle;
+            elements.querySelector('#image').style.backgroundImage = item.backgroundImage;
             
         });
     }
