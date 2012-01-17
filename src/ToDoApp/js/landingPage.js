@@ -6,6 +6,9 @@
     var itemRenderer;
     var pageLayout;
 
+    var itemsSource; // itemsSource handles the reordering of items in the UI
+    var items; // items allows for basic array operations
+
     // event handler for when the application has navigated to my page
     WinJS.Application.addEventListener('fragmentappended', function handler(e) {
         if (e.location === '/html/landingPage.html') { fragmentLoad(e.fragment, e.state); }
@@ -19,7 +22,7 @@
             }
         } catch (e) { }
 
-        // asynchronously apply bindings within a fragment 
+        // asynchronously apply bindings within a fragment
         WinJS.UI.processAll(elements)
             .then(function () {
             itemRenderer = elements.querySelector('.itemTemplate');
@@ -46,6 +49,7 @@
         var doingTaskGroup = pageData.groups[1];
         var doingTasks = [];
 
+        // find tasks only in that middle list
         for (var i = 0; i < pageData.items.length; i++) {
             var currentItem = pageData.items[i];
             if (currentItem.group == doingTaskGroup) {
@@ -68,15 +72,15 @@
         var groupDataSource = new WinJS.UI.GroupDataSource(
             new WinJS.UI.ListDataSource(pageData.groups),
             function (item) {
-                return {
-                    key: item.data.group.key,
-                    data: {
-                        title: item.data.group.title,
-                        click: function () {
-                            WinJS.Navigation.navigate('/html/collectionPage.html', { group: item.data.group });
-                        }
+            return {
+                key: item.data.group.key,
+                data: {
+                    title: item.data.group.title,
+                    click: function () {
+                        WinJS.Navigation.navigate('/html/collectionPage.html', { group: item.data.group });
                     }
-                };
+                }
+            };
         });
 
         WinJS.UI.setOptions(lv, {
@@ -101,7 +105,7 @@
         if (pageLayout === Windows.UI.ViewManagement.ApplicationLayoutState.snapped) {
             // ignore the click when in snapped mode
         } else {
-            var item = pageData.items[e.detail.itemIndex];
+            var item = items[e.detail.itemIndex];
             WinJS.Navigation.navigate('/html/detailPage.html', { item: item });
         }
     }
@@ -132,86 +136,90 @@
         return groups;
     }
 
-    function addNewItem() {
-        pageData.items.push({
-            group: pageData.groups[0],
-            key: 'backlog' + pageData.items.length + 1,
-            title: 'New Task',
-            subtitle: 'Add something',
-            backgroundImage: 'url(/images/items/sydjs.png)',
-        });
+    function getUrl(image) {
+        return 'url(/images/items/' + image + ')';
     }
+
+    function addNewItem() {
+        var newItem = {
+            group: pageData.groups[0],
+            key: 'backlog' + (items.length + 1),
+            title: 'New Task',
+            subtitle: 'Put some words here',
+            backgroundImage: getUrl('sydjs.png'),
+        };
+        items.splice(0, 0, newItem);
+        itemsSource.insertAtStart("not-used", newItem);
+    }
+
 
     function getItems() {
         var colors = ['rgba(209, 211, 212, 1)', 'rgba(147, 149, 152, 1)', 'rgba(65, 64, 66, 1)'];
-        var items = [];
+        items = [];
 
         CreateMockBacklog(items);
         CreateCurrentItems(items);
         CreateCompletedItems(items);
 
-        return items;
+        itemsSource = WinJS.UI.ArrayDataSource(items);
+
+        return itemsSource;
     }
 
     function CreateMockBacklog(items) {
-        var category = pageData.groups[0];
-
         items.push({
-            group: category,
+            group: pageData.groups[0],
             key: 'backlog1',
             title: 'Code52',
             subtitle: 'Ensure that you mention it!',
-            backgroundImage: 'url(/images/items/code52.png)',
+            backgroundImage: getUrl('code52.png')
         });
         items.push({
-            group: category,
+            group: pageData.groups[0],
             key: 'backlog2',
             title: 'Givecamp',
             subtitle: 'Ensure that you mention it!',
-            backgroundImage: 'url(/images/items/givecamp.png)'
+            backgroundImage: getUrl('givecamp.png')
         });
     }
 
     function CreateCurrentItems(items) {
-        var category = pageData.groups[1];
         items.push({
-            group: category,
+            group: pageData.groups[1],
             key: 'backlog3',
             title: 'SydJS',
             subtitle: 'Talk about WinJS',
-            backgroundImage: 'url(/images/items/sydjs.png)',
+            backgroundImage: getUrl('sydjs.png'),
         });
 
     }
 
     function CreateCompletedItems(items) {
-        var category = pageData.groups[2];
         items.push({
-            group: category,
+            group: pageData.groups[2],
             key: 'backlog3',
             title: 'SydJS',
             subtitle: 'Prepare talk',
-            backgroundImage: 'url(/images/items/sydjs.png)',
+            backgroundImage: getUrl('sydjs.png'),
         });
 
         for (var i = 4; i < 10; i++) {
             items.push({
-                group: category,
+                group: pageData.groups[2],
                 key: 'backlog' + i,
                 title: 'SydJS',
                 subtitle: 'Have a beer',
-                backgroundImage: 'url(/images/items/beer.jpg)',
+                backgroundImage: getUrl('beer.jpg'),
             });
         }
 
-
         for (var i = 10; i < 14; i++) {
             items.push({
-                group: category,
+                group: pageData.groups[2],
                 key: 'backlog' + i,
                 title: 'SydJS',
                 subtitle: 'Have some pizza',
-                backgroundImage: 'url(/images/items/pizza.jpg)',
+                backgroundImage: getUrl('pizza.jpg'),
             });
         }
     }

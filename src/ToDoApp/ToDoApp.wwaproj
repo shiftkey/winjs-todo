@@ -22,7 +22,6 @@
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest" />
     <Content Include="default.html" />
-    <Content Include="css\collectionPage.css" />
     <Content Include="css\default.css" />
     <Content Include="css\detailPage.css" />
     <Content Include="css\landingPage.css" />
