@@ -6,8 +6,8 @@
     var itemRenderer;
     var pageLayout;
 
-    var itemsSource; // itemsSource handles the reordering of items in the UI
-    var items; // items allows for basic array operations
+    var itemsSource; // handles the reordering of items in the UI
+    var items; // allows for basic array operations
 
     // event handler for when the application has navigated to my page
     WinJS.Application.addEventListener('fragmentappended', function handler(e) {
@@ -30,9 +30,9 @@
             listRenderer = elements.querySelector('.listTemplate');
             var lv = WinJS.UI.getControl(elements.querySelector('.landingList'));
             updateForLayout(lv, Windows.UI.ViewManagement.ApplicationLayout.value);
-        });
 
-        document.getElementById('add').addEventListener('click', addNewItem, false);
+            document.getElementById('add').addEventListener('click', addNewItem, false);
+        });
     }
 
     function updateForLayout(lv, layout) {
@@ -50,8 +50,8 @@
         var doingTasks = [];
 
         // find tasks only in that middle list
-        for (var i = 0; i < pageData.items.length; i++) {
-            var currentItem = pageData.items[i];
+        for (var i = 0; i < items.length; i++) {
+            var currentItem = items[i];
             if (currentItem.group == doingTaskGroup) {
                 doingTasks.push(currentItem);
             }
@@ -76,9 +76,6 @@
                 key: item.data.group.key,
                 data: {
                     title: item.data.group.title,
-                    click: function () {
-                        WinJS.Navigation.navigate('/html/collectionPage.html', { group: item.data.group });
-                    }
                 }
             };
         });
@@ -117,21 +114,18 @@
             key: 'group1',
             title: 'Backlog',
             label: 'Tasks I haven\'t started',
-            description: 'Just a random collection of things I need to do',
         });
 
         groups.push({
             key: 'group2',
             title: 'In Progress',
             label: 'Tasks that are underway',
-            description: 'What I\'m doing currently',
         });
 
         groups.push({
             key: 'group3',
             title: 'Done',
             label: 'Tasks that are completed',
-            description: 'Look at how awesome I am',
         });
         return groups;
     }
@@ -152,7 +146,6 @@
         itemsSource.insertAtStart("not-used", newItem);
     }
 
-
     function getItems() {
         var colors = ['rgba(209, 211, 212, 1)', 'rgba(147, 149, 152, 1)', 'rgba(65, 64, 66, 1)'];
         items = [];
@@ -162,7 +155,6 @@
         CreateCompletedItems(items);
 
         itemsSource = WinJS.UI.ArrayDataSource(items);
-
         return itemsSource;
     }
 
@@ -191,7 +183,6 @@
             subtitle: 'Talk about WinJS',
             backgroundImage: getUrl('sydjs.png'),
         });
-
     }
 
     function CreateCompletedItems(items) {

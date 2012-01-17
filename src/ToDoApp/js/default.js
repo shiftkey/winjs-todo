@@ -54,12 +54,6 @@
                 }
             }, false);
 
-
-            WinJS.UI.process(document.getElementById('appbar'))
-                .then(function () {
-                document.getElementById('home').addEventListener('click', navigateHome, false);
-            });
-
             WinJS.Navigation.navigate(homePage);
         }
     }

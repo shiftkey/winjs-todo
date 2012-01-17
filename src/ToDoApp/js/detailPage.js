@@ -18,10 +18,17 @@
             elements.querySelector('#subtitle').value = currentItem.subtitle;
             elements.querySelector('#image').style.backgroundImage = currentItem.backgroundImage;
             
+            WinJS.UI.process(document.getElementById('appbar'))
+                .then(function () {
+                document.getElementById('save').addEventListener('click', saveItem, false);
+                document.getElementById("open").addEventListener('click', openFile, false);
+                document.getElementById("capture").addEventListener('click', captureImage, false);
+            });
         });
+    }
 
-        document.getElementById("open").addEventListener('click', openFile, false);
-        document.getElementById("capture").addEventListener('click', captureImage, false);
+    function saveItem() {
+        WinJS.Navigation.back(1);
     }
 
     function openFile() {
@@ -32,8 +39,7 @@
 
         openPicker.pickSingleFileAsync().then(function (file) {
             if (file) {
-                // Application now has read/write access to the picked file
-                // sdkSample.displayStatus("Picked photo: " + file.name);
+                // TODO: write the file access
             } else {
                 //sdkSample.displayStatus("File was not returned");
             }
