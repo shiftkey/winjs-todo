@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>Landing Page</title>
-    
     <!-- WinJS references -->
     <link rel="stylesheet" href="/winjs/css/ui-dark.css" />
     <script type="ms-deferred/javascript" src="/winjs/js/base.js"></script>
@@ -13,7 +12,6 @@
     <script type="ms-deferred/javascript" src="/winjs/js/animations.js"></script>
     <script type="ms-deferred/javascript" src="/winjs/js/uicollections.js"></script>
     <script type="ms-deferred/javascript" src="/winjs/js/wwaapp.js"></script>
-    
     <link rel="stylesheet" href="/css/default.css" />
     <link rel="stylesheet" href="/css/landingPage.css" />
     <script type="ms-deferred/javascript" src="/js/landingPage.js"></script>
@@ -21,45 +19,38 @@
 <body>
     <!-- These templates are used to display each item in the ListView declared below. -->
     <div class="headerTemplate" data-win-control="WinJS.Binding.Template">
-        <h1 class="win-contentTitle" data-win-bind="onclick: click; textContent: title" tabindex="0" role="link"></h1>
-    </div>
-   <div class="listTemplate" data-win-control="WinJS.Binding.Template">
-        <div class="largeTileTextTemplate">
-            <div class="largeTileTextTemplateBackground" data-win-bind="style.backgroundImage: backgroundImage"></div>
-            <div class="largeTileTextTemplateOverlay">
-                <div class="largeTileTextTemplateLargeText" data-win-bind="textContent: title"></div>
-                <div class="largeTileTextTemplateSmallTextList" data-win-bind="textContent: subtitle"></div>
-            </div>
-        </div>
+        <h1 class="win-contentTitle" data-win-bind="textContent: title" tabindex="0" role="link">
+        </h1>
     </div>
     <div class="itemTemplate" data-win-control="WinJS.Binding.Template">
         <div class="largeTileTextTemplate">
-            <div class="largeTileTextTemplateBackground" data-win-bind="style.backgroundImage: backgroundImage"></div>
+            <div class="largeTileTextTemplateBackground" data-win-bind="style.backgroundImage: backgroundImage">
+            </div>
             <div class="largeTileTextTemplateOverlay">
-                <div class="largeTileTextTemplateLargeText" data-win-bind="textContent: title"></div>
-                <div class="largeTileTextTemplateSmallText" data-win-bind="textContent: subtitle"></div>
+                <div class="largeTileTextTemplateLargeText" data-win-bind="textContent: title">
+                </div>
+                <div class="largeTileTextTemplateSmallText" data-win-bind="textContent: subtitle">
+                </div>
             </div>
         </div>
     </div>
-
     <!-- The content that will be loaded and displayed. -->
     <div class="fragment landingPage">
         <header role="banner" aria-label="Header content">
-            <button disabled class="win-backbutton" aria-label="Back"></button>
+            <button disabled class="win-backbutton" aria-label="Back">
+            </button>
             <div class="titleArea">
-                <h1 class="pageTitle win-title">To-Do List</h1>
+                <h1 class="pageTitle win-title">
+                    To-Do List</h1>
             </div>
         </header>
         <section role="main" aria-label="Main content">
-            <div class="landingList"
-                 data-win-control="WinJS.UI.ListView"
-                 data-win-options="{layout: {type: WinJS.UI.GridLayout, groupHeaderPosition: 'top'}, selectionMode: 'none'}"
-                 aria-label="Collections">
+            <div class="landingList" data-win-control="WinJS.UI.ListView" data-win-options="{layout: {type: WinJS.UI.GridLayout, groupHeaderPosition: 'top'}, selectionMode: 'none'}"
+                aria-label="Collections">
             </div>
         </section>
     </div>
-
-     <div id="appbar" data-win-control="WinJS.UI.AppBar" aria-label="Command Bar" data-win-options="{position:'bottom', transient:true, autoHide:0, lightDismiss:false}">
+    <div id="appbar" data-win-control="WinJS.UI.AppBar" aria-label="Command Bar" data-win-options="{position:'bottom', transient:true, autoHide:0, lightDismiss:false}">
         <div class="win-right">
             <button id="add" class="win-command">
                 <span class="win-commandicon win-large">&#xE109;</span><span class="win-label">Add Task</span>

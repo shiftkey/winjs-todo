@@ -249,13 +249,13 @@ h6
 input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], input[type=url], input[type=search],
 textarea, div[contenteditable]
 {
-    width: 256px;
+    width: 500px;
     min-height: 20px;
     min-width: 64px;
     padding: 4px 8px 4px 8px;
     border-width: 2px;
     border-style: solid;
-    font: 11pt "Segoe UI";
+    font: 18pt "Segoe UI";
     letter-spacing: 0.02em;
     background-clip: padding-box;
     margin: 4px 0px;

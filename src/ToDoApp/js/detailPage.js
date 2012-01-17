@@ -8,26 +8,33 @@
         if (e.location === '/html/detailPage.html') { fragmentLoad(e.fragment, e.state); }
     });
 
+    function getById(id) {
+        return document.getElementById(id);
+    }
+
+    function attach(id, callback) {
+        getById(id).addEventListener('click', callback, false);
+    }
+
     function fragmentLoad(elements, options) {
         currentItem = options.item;
         elements.querySelector('.pageTitle').textContent = currentItem.group.title;
 
         WinJS.UI.processAll(elements)
             .then(function () {
-            elements.querySelector('#title').value = currentItem.title;
-            elements.querySelector('#subtitle').value = currentItem.subtitle;
-            elements.querySelector('#image').style.backgroundImage = currentItem.backgroundImage;
-            
-            WinJS.UI.process(document.getElementById('appbar'))
-                .then(function () {
-                document.getElementById('save').addEventListener('click', saveItem, false);
-                document.getElementById("open").addEventListener('click', openFile, false);
-                document.getElementById("capture").addEventListener('click', captureImage, false);
-            });
+            getById('title').value = currentItem.title;
+            getById('subtitle').value = currentItem.subtitle;
+
+            attach('save', saveItem);
+            attach('open', openFile);
+            attach('catpure', captureImage);
         });
     }
 
     function saveItem() {
+        currentItem.title = getById('title').value;
+        currentItem.subtitle = getById('subtitle').value;
+
         WinJS.Navigation.back(1);
     }
 
@@ -39,15 +46,14 @@
 
         openPicker.pickSingleFileAsync().then(function (file) {
             if (file) {
-                // TODO: write the file access
+                // TODO: display the file on the main page
             } else {
-                //sdkSample.displayStatus("File was not returned");
+                // TODO: handle the user cancelling
             }
         });
     }
 
     function captureImage() {
-
         try {
             var mode = Windows.Media.Capture.CameraCaptureUIMode.photo;
 
@@ -55,15 +61,9 @@
             dialog.photoSettings.croppedAspectRatio = { width: 16, height: 9 };
             dialog.captureFileAsync(mode).then(function (file) {
                 if (file) {
-                    // sdkSample.displayStatus("");
-                    //var scenario1BlobUrl = URL.createObjectURL(file);
-                    //id("scenario1ImageHolder1").src = scenario1BlobUrl;
-                    //photoFile = file.path;
-
-                    //// Show status
-                    //scenario1ActionsChangeVisibility("visible");
+                    // TODO: attach the file to the item
                 } else {
-                    // sdkSample.displayStatus("No photo captured.");
+                    // TODO: handle the user cancelling
                 }
             }, function (err) {
                 console.log(err);
@@ -71,9 +71,7 @@
         } catch (err) {
             console.log(err);
         }
-
     }
-
 
     WinJS.Namespace.define('detailPage', {
         fragmentLoad: fragmentLoad,

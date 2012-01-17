@@ -1,7 +1,6 @@
 ﻿(function () {
     'use strict';
 
-    var listRenderer;
     var headerRenderer;
     var itemRenderer;
     var pageLayout;
@@ -27,7 +26,6 @@
             .then(function () {
             itemRenderer = elements.querySelector('.itemTemplate');
             headerRenderer = elements.querySelector('.headerTemplate');
-            listRenderer = elements.querySelector('.listTemplate');
             var lv = WinJS.UI.getControl(elements.querySelector('.landingList'));
             updateForLayout(lv, Windows.UI.ViewManagement.ApplicationLayout.value);
 
@@ -49,7 +47,7 @@
         var doingTaskGroup = pageData.groups[1];
         var doingTasks = [];
 
-        // find tasks only in that middle list
+        // display tasks only in that middle list
         for (var i = 0; i < items.length; i++) {
             var currentItem = items[i];
             if (currentItem.group == doingTaskGroup) {
@@ -59,7 +57,7 @@
 
         WinJS.UI.setOptions(lv, {
             dataSource: doingTasks,
-            itemRenderer: listRenderer,
+            itemRenderer: itemRenderer,
             groupDataSource: null,
             groupRenderer: null,
             oniteminvoked: itemInvoked
@@ -112,19 +110,19 @@
 
         groups.push({
             key: 'group1',
-            title: 'Backlog',
+            title: 'backlog',
             label: 'Tasks I haven\'t started',
         });
 
         groups.push({
             key: 'group2',
-            title: 'In Progress',
+            title: 'in progress',
             label: 'Tasks that are underway',
         });
 
         groups.push({
             key: 'group3',
-            title: 'Done',
+            title: 'done',
             label: 'Tasks that are completed',
         });
         return groups;
@@ -142,12 +140,13 @@
             subtitle: 'Put some words here',
             backgroundImage: getUrl('sydjs.png'),
         };
-        items.splice(0, 0, newItem);
+        
         itemsSource.insertAtStart("not-used", newItem);
+
+        items.splice(0, 0, newItem);
     }
 
     function getItems() {
-        var colors = ['rgba(209, 211, 212, 1)', 'rgba(147, 149, 152, 1)', 'rgba(65, 64, 66, 1)'];
         items = [];
 
         CreateMockBacklog(items);
