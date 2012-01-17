@@ -30,7 +30,12 @@
             updateForLayout(lv, Windows.UI.ViewManagement.ApplicationLayout.value);
 
             document.getElementById('add').addEventListener('click', addNewItem, false);
+            document.getElementById('clear').addEventListener('click', clearNotifications, false);
         });
+    }
+
+    function clearNotifications() {
+        Windows.UI.Notifications.TileUpdateManager.createTileUpdaterForApplication().clear();
     }
 
     function updateForLayout(lv, layout) {
