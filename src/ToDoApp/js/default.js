@@ -17,27 +17,27 @@
     function navigated(e) {
         WinJS.UI.Fragments.clone(e.detail.location, e.detail.state)
             .then(function (frag) {
-                var host = document.getElementById('contentHost');
-                host.innerHTML = '';
-                host.appendChild(frag);
-                document.body.focus();
+            var host = document.getElementById('contentHost');
+            host.innerHTML = '';
+            host.appendChild(frag);
+            document.body.focus();
 
-                var backButton = document.querySelector('header[role=banner] .win-backbutton');
-                if (backButton) {
-                    backButton.addEventListener('click', function () {
-                        WinJS.Navigation.back();
-                    }, false);
-                    if (WinJS.Navigation.canGoBack) {
-                        backButton.removeAttribute('disabled');
-                    }
-                    else {
-                        backButton.setAttribute('disabled', 'true');
-                    }
+            var backButton = document.querySelector('header[role=banner] .win-backbutton');
+            if (backButton) {
+                backButton.addEventListener('click', function () {
+                    WinJS.Navigation.back();
+                }, false);
+                if (WinJS.Navigation.canGoBack) {
+                    backButton.removeAttribute('disabled');
                 }
+                else {
+                    backButton.setAttribute('disabled', 'true');
+                }
+            }
 
-                WinJS.Application.queueEvent({ type: 'fragmentappended', location: e.detail.location, fragment: host, state: e.detail.state });
-            });
-        }
+            WinJS.Application.queueEvent({ type: 'fragmentappended', location: e.detail.location, fragment: host, state: e.detail.state });
+        });
+    }
 
     WinJS.Application.onmainwindowactivated = function (e) {
         if (e.detail.kind === Windows.ApplicationModel.Activation.ActivationKind.launch) {
@@ -57,8 +57,8 @@
 
             WinJS.UI.process(document.getElementById('appbar'))
                 .then(function () {
-                    document.getElementById('home').addEventListener('click', navigateHome, false);
-                });
+                document.getElementById('home').addEventListener('click', navigateHome, false);
+            });
 
             WinJS.Navigation.navigate(homePage);
         }

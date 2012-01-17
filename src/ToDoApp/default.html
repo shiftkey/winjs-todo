@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>ToDoApp</title>
-
     <!-- WinJS references -->
     <link rel="stylesheet" href="/winjs/css/ui-dark.css" />
     <script src="/winjs/js/base.js"></script>
@@ -14,17 +13,20 @@
     <script src="/winjs/js/uicollections.js"></script>
     <script src="/winjs/js/wwaapp.js"></script>
     <script src="/winjs/js/res.js"></script>
-
     <!-- ToDoApp references -->
     <link rel="stylesheet" href="/css/default.css" />
     <script src="/js/default.js"></script>
 </head>
-<body data-homePage="/html/landingPage.html">
-    <div id="contentHost"></div>
+<body data-homepage="/html/landingPage.html">
+    <div id="contentHost">
+    </div>
     <div id="appbar" data-win-control="WinJS.UI.AppBar" aria-label="Command Bar" data-win-options="{position:'bottom', transient:true, autoHide:0, lightDismiss:false}">
         <div class="win-left">
             <button id="home" class="win-command">
                 <span class="win-commandicon win-large">&#xE10F;</span><span class="win-label">Home</span>
+            </button>
+            <button id="add" class="win-command">
+                <span class="win-commandicon win-large">&#xE109;</span><span class="win-label">Add Task</span>
             </button>
         </div>
     </div>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>landingPage</title>
+    <title>Landing Page</title>
     
     <!-- WinJS references -->
     <link rel="stylesheet" href="/winjs/css/ui-dark.css" />
@@ -25,10 +25,10 @@
     </div>
    <div class="listTemplate" data-win-control="WinJS.Binding.Template">
         <div class="largeTileTextTemplate">
-            <div class="largeTileTextTemplateBackground" data-win-bind="style.backgroundColor: backgroundColor"></div>
+            <div class="largeTileTextTemplateBackground" data-win-bind="style.backgroundImage: backgroundImage"></div>
             <div class="largeTileTextTemplateOverlay">
                 <div class="largeTileTextTemplateLargeText" data-win-bind="textContent: title"></div>
-                <div class="largeTileTextTemplateSmallTextList" data-win-bind="textContent: description"></div>
+                <div class="largeTileTextTemplateSmallTextList" data-win-bind="textContent: subtitle"></div>
             </div>
         </div>
     </div>
