@@ -8,6 +8,7 @@
         if (e.location === '/html/detailPage.html') { fragmentLoad(e.fragment, e.state); }
     });
 
+    // shortcut functions - yes, you *could* use jQuery here
     function getById(id) {
         return document.getElementById(id);
     }
@@ -22,10 +23,10 @@
 
         WinJS.UI.processAll(elements)
             .then(function () {
-            getById('title').value = currentItem.title;
+            getById('title').value = currentItem.title; // TODO: use the WinJS bindings?
             getById('subtitle').value = currentItem.subtitle;
 
-            attach('save', saveItem);
+            attach('save', saveItem); // attach event handlers
             attach('open', openFile);
             attach('catpure', captureImage);
         });
@@ -35,7 +36,7 @@
         currentItem.title = getById('title').value;
         currentItem.subtitle = getById('subtitle').value;
 
-        WinJS.Navigation.back(1);
+        WinJS.Navigation.back(1); // return to previous page
     }
 
     function openFile() {

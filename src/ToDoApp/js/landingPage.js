@@ -24,7 +24,7 @@
         // asynchronously apply bindings within a fragment
         WinJS.UI.processAll(elements)
             .then(function () {
-            itemRenderer = elements.querySelector('.itemTemplate');
+            itemRenderer = elements.querySelector('.itemTemplate'); // selectors without including jQuery
             headerRenderer = elements.querySelector('.headerTemplate');
             var lv = WinJS.UI.getControl(elements.querySelector('.landingList'));
             updateForLayout(lv, Windows.UI.ViewManagement.ApplicationLayout.value);
@@ -93,6 +93,7 @@
         lv.layout = new WinJS.UI.GridLayout({ groupHeaderPosition: 'top' });
     }
 
+    // listen for layout change
     function layoutChanged(e) {
         var list = document.querySelector('.landingList');
         if (list) {
@@ -151,6 +152,7 @@
         items.splice(0, 0, newItem);
     }
 
+    // create sample data to display to the user
     function getItems() {
         items = [];
 
